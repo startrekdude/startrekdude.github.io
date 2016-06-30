@@ -1,0 +1,15 @@
+h1 {
+	color: Blue;
+	font-size: 48pt;
+	font-family: Impact, sans-serif;
+
+}
+
+body	{
+	background-image: url('./123.jpg');
+}
+
+* {
+	color: yellow;
+	font-family:Arial;
+}
