@@ -20,7 +20,7 @@ body {
 
 @font-face{
 	font-family:'Jokerman';
-	src: local('Jokerman'), url("http://cors.io/?u=http://www.myfontfree.com/data/200/j/jokerman/Jokerman.ttf") format("truetype");
+	src: local('Jokerman'), url("https://crossorigin.me/http://www.myfontfree.com/data/200/j/jokerman/Jokerman.ttf") format("truetype");
 }
 button {
 	color: black;
