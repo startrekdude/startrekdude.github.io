@@ -1,0 +1,28 @@
+h1 {
+	color: #9400D3;
+	font-size: 48pt;
+	font-family: Impact, sans-serif;
+}
+a {
+	font-size: 20pt;
+}
+p {
+	font-size: 16pt;
+}
+body {
+	background-image: url('./background.jpeg');
+}
+
+:not(a) {
+	color: #00e6e6;
+	font-family: 'Jokerman';
+}
+
+@font-face{
+	font-family:'Jokerman';
+	src: local('Jokerman'), url("https://www.fontify.me/cm/e6d89f44260799ab26fcf97f0efac12e/jokerman.woff") format("woff");
+}
+button {
+	color: black;
+	font-size: 15pt;
+}

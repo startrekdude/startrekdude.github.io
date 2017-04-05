@@ -1,0 +1,14 @@
+* {
+	color: #FFFFFF;
+	font-family: Segoe Script;
+}
+
+h1 {
+	color: darkred;
+	font-size: 48pt;
+	font-family: Impact, sans-serif;
+}
+
+body {
+	background-image: url('./space.jpg');
+}

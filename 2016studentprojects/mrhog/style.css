@@ -1,0 +1,9 @@
+h1 {
+	color: #ffffff;
+	font-size: 48pt;
+	font-family: Segoe Script ;
+}
+
+body {
+	background-image: url('./grass.jpg');
+}
