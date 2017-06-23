@@ -1,0 +1,19 @@
+* {
+	font-family: 'Monoton', cursive;
+}	
+
+body {
+   background-color: black;
+   background-image:url('lol.gif');
+}
+	   
+.white {
+    color: white;
+}
+.bold {
+	font-weight: bold;
+}
+
+.underline {
+	text-decration: underline;
+}
