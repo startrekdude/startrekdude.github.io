@@ -9,7 +9,7 @@
 }(this, function () {
     'use strict';
 
-    var defaultDistPath = '';
+    var defaultDistPath = '/ctf';
 
     /**
      * @enum
