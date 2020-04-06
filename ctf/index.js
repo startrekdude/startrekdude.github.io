@@ -65,8 +65,8 @@
 			"83b8694c34d0d1adbce7ca4cbe013e5e82a9e0ee8f757c71a95b3c927bbe1ee03cfdad6176835e6259293db4c5ab9df5",
 			"866200709bccabfc918635bb406096d9");
 		SecretBox_init(secretbox2,
-			"cef433778cd154a871fa81fecba971910d390a4d5182009e84111e2d6e467217a920f168e0d970cac1c7",
-			"13e4529b3ef74f1b58f199f8fc1c1817");
+			"d382992a0ef4566ad266945b0944041dd45f850eeeca43f9b56635a585aab2043640a748b567ce2e562d",
+			"f4a153658ec6de8496c9ab3cfa49bb77");
 	}
 	
 	document.addEventListener("DOMContentLoaded", init);
