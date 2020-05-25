@@ -1,5 +1,5 @@
 (function() {
-	"use srict";
+	"use strict";
 	
 	var loadModel = function(ab) {
 		var model = CBOR.decode(ab);
