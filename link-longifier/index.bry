@@ -1,0 +1,72 @@
+from browser import document, bind, html, window
+from urllib.parse import urlparse
+
+NATO_PHONETIC_ALPHABET = [
+	"alfa", "bravo", "charlie", "delta", "echo", "foxtrot", "golf", "hotel", "india", "juliett", "kilo",
+	"lima", "mike", "november", "oscar", "papa", "quebec", "romeo", "sierra", "tango", "uniform", "victor",
+	"whiskey", "xRay", "yankee", "zulu",
+]
+PHONETIC_ALPHABET = [] + \
+	["space", "exclamationPoint", "doubleQuote", "pound", "dollarSign", "percentageSign", "ampersand",
+	 "singleQuote", "leftBracket", "rightBracket", "asterisk", "plus", "comma", "dashOrMinus", "period",
+	 "slash", "nadazero", "unaone", "bissotwo", "terrathree", "kartefour", "pantafive", "soxisix", "setteseven",
+	 "oktoeight", "novenine", "colon", "semicolon", "lessThanSign", "equals", "greaterThanSign", "questionMark",
+	 "atSign"] + \
+	["uppercase{}".format(s.title()) for s in NATO_PHONETIC_ALPHABET] + \
+	["leftSquareBracket", "backslash", "rightSquareBracket", "caret", "underscore", "backtick"] + \
+	NATO_PHONETIC_ALPHABET + \
+	["leftCurlyBracket", "pipe", "rightCurlyBracket", "squiggly"]
+
+def char_to_phonetic(c):
+	"""Convert a character to a symbol from the phonetic alphabet"""
+	return PHONETIC_ALPHABET[ord(c) - 32]
+
+def string_to_phonetic(s):
+	"""Convert a string to a '-'-delimited series of symbols from the phonetic alphabet"""
+	return "-".join(char_to_phonetic(c) for c in s)
+
+def phonetic_to_char(ph):
+	"""Converts a symbol from the phonetic alphabet into a character"""
+	if ph not in PHONETIC_ALPHABET:
+		raise ValueError(ph)
+	return chr(PHONETIC_ALPHABET.index(ph) + 32)
+
+def phonetic_to_string(ph):
+	"""Converts a series of '-'-delimited symbols from the phonetic alphabet into a string"""
+	return "".join(phonetic_to_char(part) for part in ph.split("-"))
+
+def is_valid_url(s):
+	"""Returns whether s is a valid url"""
+	try:
+		url = urlparse(s)
+		return all([url.scheme, url.netloc])
+	except: return False
+
+def copy(s):
+	"""Copies s onto the clipboard"""
+	el = document["copying"]
+	el.value = s
+	el.select()
+	document.execCommand("copy")
+
+@bind(document["submit"], "click")
+def submit(e):
+	url = document["link"].value
+	if not is_valid_url(url):
+		window.alert("'{}': not a valid URL".format(url))
+		return
+	result = "{}#{}".format(window.location.href, string_to_phonetic(url))
+	document["results"].style.display = ""
+	document["resultList"] <= html.LI(result)
+	copy(result)
+
+hash = window.location.hash[1:]
+if hash:
+	try:
+		url = phonetic_to_string(hash)
+		window.location.assign(url)
+	except ValueError as e:
+		window.alert("'{}': not a valid fragment".format(e.args[0]))
+else:
+	document["loading"].style.display = "none";
+	document["content"].style.display = "";

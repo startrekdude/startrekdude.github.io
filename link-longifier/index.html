@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Link Longifier</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython_stdlib.js"></script>
+		<script type="text/python" src="index.bry"></script>
+		
+	</head>
+	<body onload="brython()">
+		<p id="loading">Loading...</p>
+		<div id="content" style="display: none;">
+			<h1>Link Longifier</h1>
+			<p>Links too short? Make 'em longer with this link longification tool!</p>
+			<p>
+				<span>Paste link here: </span>
+				<input id="link" type="text" />
+			</p>
+			<button id="submit">Longify my link!</button>
+			
+			<div id="results" style="display: none;">
+				<span>Link Copied!</span>
+				<hr />
+				<ol id="resultList">
+					
+				</ol>
+			</div>
+			
+			<textarea id="copying" style="position: fixed; left: -999px; top: -999px;"></textarea>
+		</div>
+	</body>
+</html>
