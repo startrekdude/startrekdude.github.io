@@ -1,0 +1,57 @@
+* {
+	font-family: 'Bungee Inline', cursive;
+}
+
+body {
+    background:linear-gradient(to right, #ef3b36, #ffffff);
+    
+    
+}
+
+
+.red {
+	color: red;
+}	
+
+.bold {;
+	font-weight: bold;
+	
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.big {
+	font-size: 48pt;
+}
+
+.gradient {
+	background: linear-gradient(to right, #0099f7, #f11712);
+	 -webkit-background-clip: text;
+	 -webkit-text-fill-color: transparent;
+}	 
+.gradient2 {
+	 background: linear-gradient(to right, #8e0e00, #1f1c18);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;	 
+} 
+@keyframes spin {
+	from { 
+	    transform: rotate(0deg);
+	} 
+    to {
+		transform: rotate(360deg);
+    }	   
+}
+.spin-infinite {
+	animation: spin 5s linear infinite; 
+}	
+
+.gradient3 {
+	background:linear-gradient(to right, #67b26f, #4ca2cd);
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+	 
+		

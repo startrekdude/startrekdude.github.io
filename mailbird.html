@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>CVE-2019-15054</title>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
+		<style>
+			body {
+				font-size: 14pt;
+				font-family: 'Open Sans', sans-serif;
+			}
+			#content-container {
+				max-width: 864px;
+			}
+			#message-body, #timeline {
+				line-height: 1.6;
+			}
+			#authors-note {
+				background-color: #DDD;
+				border-radius: 25px;
+				font-style: italic;
+				padding-top: 14pt;
+				padding-bottom: 14pt;
+				padding-left: 14pt;
+			}
+			#author {
+				color: transparent;
+				background-image: linear-gradient(to right, violet 1px, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet);
+				background-size: 200%;
+				animation: aesthetic 6s linear infinite;
+				background-clip: text;
+				-webkit-background-clip: text;
+			}
+			@keyframes aesthetic {
+				0% { background-position: 200%; }
+				100% { background-position: 100%; }
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content-container">
+			<h1>CVE-2019-15054 Report</h1>
+			<p>
+				<b>From:</b> <span id="author">Sam Haskins</span><br/>
+				<b>To:</b> ██████████<br/>
+				<b>Product:</b> <a href="https://www.getmailbird.com/" target="_blank">Mailbird</a><br/>
+				<b>Date:</b> August 5<sup>th</sup>, 2019<br/>
+				<b>Date of public disclosure:</b> November 16<sup>th</sup>, 2019<br/>
+				<b>Attachments:</b><br/>
+				&emsp;<a href="mailbird.zip" target="_blank">mailbird.zip</a>
+			</p>
+			<hr/>
+			<div id="authors-note">
+				<b>11/16/2019 Author's Note:</b><br/>
+				As of November 16<sup>th</sup>, 2019, CVE-2019-15054 has been patched with the release of Mailbird 2.7.5.0.
+			</div>
+			<div id="message-body">
+				<p>Hey Mailbird Team,</p>
+				<p>
+					I've just started using Mailbird recently, and so far I really like it. It has a really intuitive and beautiful UI.<br/>
+					I'm writing to you because I have discovered a few security vulnerabilities in Mailbird that allow attackers to execute Javascript code contained within a HTML mail message in a privileged context.<br/>
+					The methods by which this can happen are as follows. I've included a proof of concept for each in the attached zip file (password is ██████).
+				</p>
+				<ol>
+					<li>An SVG file containing Javascript imported via a <code>&lt;link rel=import</code>. This requires no user interaction to execute code.</li>
+					<li>An SVG file containing Javascript embedded via an <code>embed</code> tag. This requires no user interaction to execute code.</li>
+					<li>Javascript included in an <code>onmousemove</code> attribute. This requires the user to move their mouse over the email body before code is executed.</li>
+					<li>A link to a <code>javascript:</code> URI. This requires the user to click a link before code is executed.</li>
+					<li>A link to a <code>data:</code> URI containing a <code>&lt;script</code> element. This requires the user to click a link before code is executed. <em>(Edit 10/29: Patched)</em></li>
+					<li>A <code>javascript:</code> URI within an HTML <a href="https://www.w3schools.com/tags/att_button_formaction.asp" target="_blank"><code>formaction</code></a> attribute. This requires the user to click a button before code is executed.</li>
+				</ol>
+				<p>
+					To reproduce these issues, load each of the proofs of concept from the attached zip file (password is ██████) into Mailbird as an HTML mail message.<br/>
+					Once a hypothetical attacker has achieved Javascript execution in the user's email client via one of the above vectors, they can:
+				</p>
+				<ol>
+					<li>Send any subsequently opened mail message to a server of their choice by hooking the <code>loadHtml</code> function. This access persists until Mailbird is closed.</li>
+					<li>Mount an attack on the renderer (Chromium 51.0.2704.103) using one of <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-1224/product_id-15031/version_id-200228/Google-Chrome-51.0.2704.106.html" target="_blank">405</a> vulnerabilities in that version. This would allow arbitrary code execution with the user's login token. <em>(Edit 10/29: Patched)</em></li>
+				</ol>
+				<p>A demonstration of these capabilities is included in <code>poc-extcap.html</code>, included in the attached zip file.</p>
+				<p>To fix these vulnerabilities and preempt similar vulnerabilities in the future, I would recommend that the following steps be taken:</p>
+				<ol>
+					<li>Update CefSharp (and therefore Cef, and therefore Chromium) to the latest stable version, and <em>keep it updated</em>. Out-of-date Chromium accumulates vulnerabilities very fast; Chrome 74.0.3729.108, released April 2019, already has <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-1224/product_id-15031/version_id-301755/Google-Chrome-74.0.3729.108.html" target="_blank">15</a> reported security vulnerabilities. ██████<br/>██████████████████████████████████████████████████████████████<br/>████ <em>(Edit 10/29: Mostly complete)</em></li>
+					<li>Implement a whitelist of safe HTML elements, HTML attributes, and URI schemes that cannot possibly execute Javascript and remove any HTML not on the whitelist before rendering an email. This will not cause any degradation to user experience because the set of HTML elements, HTML attributes, and URI schemes appearing in legitimate emails is already bounded. ██████████████████████████████████████████████████████<br/><em>(Edit 11/12: Patched using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">CSP directives</a>)</em></li>
+				</ol>
+				<p>I will be following the industry standard of responsible disclosure with these vulnerabilities, as elucidated in <a href="https://www.google.com/about/appsecurity/" target="_blank">Google's policy</a>. Your deadline is (August 5 + 90 days = ) November 3rd, 2019.</p>
+				<p>Please notify me when you have successfully reproduced the bugs using my proofs of concept, or if you have trouble reproducing the vulnerabilities. Additionally, feel free to email me about any other matter in connection with my report; I'm here to help.</p>
+				<p>Thank you for your time.</p>
+				<p>
+					Kind regards,<br/>
+					Sam Haskins
+				</p>
+			</div>
+			<hr/>
+			<div id="timeline">
+				<b>Timeline:</b><br/>
+				(America/Toronto time zone)<br/>
+				<b>July 28<sup>th</sup>, 2019:</b> Vulnerability discovered.<br/>
+				<b>August 4<sup>th</sup>, 2019:</b> Initial contact made with vendor via support site.<br/>
+				<b>August 5<sup>th</sup>, 2019:</b> Report submitted to vendor.<br/>
+				<b>August 6<sup>th</sup>, 2019:</b> Contacted by vendor CTO.<br/>
+				<b>August 9-13, 2019:</b> Vulnerability acknowledged by vendor.<br/>
+				<b>August 14<sup>th</sup>, 2019:</b> CVE requested; assigned CVE-2019-15054.<br/>
+				<b>October 31<sup>st</sup>, 2019:</b> Vendor requested extension of deadline to November 17<sup>th</sup>.<br/>
+				<b>November 1<sup>st</sup>, 2019:</b> Deadline extension granted.<br/>
+				<b>November 3<sup>rd</sup>, 2019:</b> 90 days public disclosure deadline.<br/>
+				<b>November 11<sup>th</sup>, 2019:</b> Received patched version from vendor.<br/>
+				<b>November 12<sup>th</sup>, 2019:</b> Tested patched version; patch resolves vulnerability.<br/>
+				<b>November 16<sup>th</sup>, 2019:</b> Patched version released; report published.<br/>
+			</div>
+		</div>
+	</body>
+</html>

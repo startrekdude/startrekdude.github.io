@@ -1,0 +1,49 @@
+* {
+	font-family: 'Vibur', cursive;
+}
+
+body {
+	background-image: linear-gradient(to right, #e6dada, #274046);
+	color: #BADA55;
+}
+
+.red {
+	color: red;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.big {
+	font-size: 48pt;
+}
+
+.gradient {
+	background: linear-gradient(to right, #283c86, #45a247);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.gradient2 {
+	background: linear-gradient(to right, #283c86, #45a247);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spin-infinite {
+	animation: spin 5s linear infinite;
+}

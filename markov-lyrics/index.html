@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lyrics Markov Chain</title>
+		<link href="index.css" rel="stylesheet">
+		<script src="cbor.js"></script>
+		<script src="index.js"></script>
+	</head>
+	<body>
+		<h1>Lyrics Markov Chain</h1>
+		<p>
+			Select Model <select id="model">
+				<option value="dragonforce.mmk">Dragonforce</option>
+				<option value="lemon_demon.mmk">Lemon Demon</option>
+				<option value="gwar.mmk">Gwar</option>
+				<option value="rem.mmk">R.E.M.</option>
+				<option value="rhapsody.mmk">Rhapsody of Fire</option>
+				<option value="combination.mmk">Combination</option>
+			</select><br>
+			Verse Length: <input id="verseLength" type="number" value="5"></input><br>
+			Verse Length Variance: <input id="verseLengthVariance" type="number" value="3"></input><br>
+			Number of Verses: <input id="numberOfVerses" type="number" value="5"></input><br>
+			Chorus Length: <input id="chorusLength" type="number" value="3"></input><br>
+			(Advanced Users) Load <a href="make_model.py" download>Custom</a> Model: 
+			<input id="customModel" accept=".mmk" type="file"></input><br>
+			<button id="submit">Go</button><span id="status">Model not ready, try again soon...</span>
+			<button id="readAloud">Read Aloud</button>
+		</p>
+		<textarea id="result" rows="30" cols="80" readonly>Results</textarea>
+	</body>
+</html>

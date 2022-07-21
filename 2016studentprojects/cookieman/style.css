@@ -1,0 +1,11 @@
+h1 {
+	color: blueviolet;
+	font-size: 48pt;
+	font-family: Impact, sans-serif;
+} body{
+	background-image:url("./photo1.jpg");
+}
+*{
+	color:red;
+	font-family: Segoe Script;
+}

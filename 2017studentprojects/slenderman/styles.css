@@ -1,0 +1,38 @@
+* {
+	font-family: 'Frijole', cursive;
+}
+
+body {
+	background-color: black;
+}
+
+.red {
+	color: red;
+}
+
+.bold {
+	front-weight: bold;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.big {
+	font-size: 48pt;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spin-infinite {
+	animation: spin 5s linear infinite;
+}
+	
+	  

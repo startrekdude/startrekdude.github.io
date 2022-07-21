@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab");
+
+body {
+	margin-left: 25pt;
+	background-image: url('background.png');
+}
+
+h1, h2 {
+	font-family: "Roboto Slab";
+}
+
+a {
+	text-decoration: none;
+}
+
+figure {
+	margin: 0px 0px 25pt;
+}
+
+figcaption {
+	font-family: "Open Sans";
+	font-size: 14pt;
+}

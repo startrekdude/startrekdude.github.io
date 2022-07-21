@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Number Tricks</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython.min.js"></script>
+		<script type="text/python" src="index.bry"></script>
+	</head>
+	<body onload="brython()">
+		<h1>Number Tricks</h1>
+		<label for="target">Target: </label>
+		<input name="target" id="target" type="number" value="12345" min="1" />
+		<label for="digit">Digit: </label>
+		<input name="digit" id="digit" type="number" value="3" min="2" max="9" />
+		
+		<button id="submit">Number tricks!!!</button>
+		
+		<textarea id="result" readonly></textarea>
+	</body>
+</html>

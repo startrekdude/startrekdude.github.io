@@ -1,0 +1,53 @@
+@font-face {
+	font-family: 'Dovahzul';
+	src: url('/2017studentprojects/resources/Dovahzul.ttf');
+}
+
+* {
+	font-family: 'Monoton', cursive;
+}
+
+.claw {
+	font-family: 'Dovahzul';
+}
+
+body {
+	background-image: url('./reaper background.gif');
+    color: #6600cc;
+}
+.blood {
+	color: #8A0707;
+}
+.cool {
+	color: #6600cc;
+}
+.bold {
+	font-weight: bold;
+}
+.underline {
+	text-decoration: underline;
+}
+.overline {
+	text-decoration: overline;
+}
+.lime {
+	text-decoration-color: #0EED00;
+}
+.both {
+	text-decoration: underline overline;
+}
+.everything {
+	text-decoration: underline overline lime;
+}
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spin-infinite {
+	animation: spin 5s linear infinite;
+}
